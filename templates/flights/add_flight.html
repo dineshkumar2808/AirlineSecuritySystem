@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Flight</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/flights.css') }}">
+</head>
+
+<body>
+
+<div class="form-container">
+
+    <a href="/flights" class="back-btn">
+        ← Back to Flights
+    </a>
+
+    <h2>✈ Add New Flight</h2>
+
+    <p class="subtitle">
+        Create and manage airline schedules
+    </p>
+
+    <form action="/save-flight" method="POST">
+
+        <div class="form-group">
+            <label for="flight_no">Flight Number</label>
+            <input
+                type="text"
+                id="flight_no"
+                name="flight_no"
+                placeholder="AI-101"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="airline_name">Airline Name</label>
+            <input
+                type="text"
+                id="airline_name"
+                name="airline_name"
+                placeholder="Air India"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="source">Source</label>
+            <input
+                type="text"
+                id="source"
+                name="source"
+                placeholder="Chennai"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="destination">Destination</label>
+            <input
+                type="text"
+                id="destination"
+                name="destination"
+                placeholder="Mumbai"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="departure_time">Departure Time</label>
+            <input
+                type="datetime-local"
+                id="departure_time"
+                name="departure_time"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="arrival_time">Arrival Time</label>
+            <input
+                type="datetime-local"
+                id="arrival_time"
+                name="arrival_time"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="status">Flight Status</label>
+
+            <select id="status" name="status">
+                <option value="Scheduled">Scheduled</option>
+                <option value="Boarding">Boarding</option>
+                <option value="Delayed">Delayed</option>
+                <option value="Cancelled">Cancelled</option>
+            </select>
+        </div>
+
+        <button type="submit" class="submit-btn">
+            Save Flight
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

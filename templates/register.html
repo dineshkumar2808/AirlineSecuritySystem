@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AirSecure Registration</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/register.css') }}">
+</head>
+
+<body>
+
+<div class="background-overlay"></div>
+
+<div class="register-container">
+
+    <div class="logo-section">
+
+        <div class="logo-circle">
+            ✈
+        </div>
+
+        <h1>AirSecure</h1>
+
+        <span class="portal-badge">
+            Airport Security Portal
+        </span>
+
+        <p>
+            Create Authorized User Account
+        </p>
+
+    </div>
+
+    <div class="welcome-box">
+
+        <h3>🛡 Security Operations Center</h3>
+
+        <p>
+            Register security officers, administrators,
+            and airport personnel.
+        </p>
+
+    </div>
+
+    <form action="/save-user" method="POST">
+
+        <div class="input-group">
+            <label for="username">Username</label>
+
+            <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter Username"
+                required>
+        </div>
+
+        <div class="input-group">
+            <label for="password">Password</label>
+
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter Password"
+                required>
+        </div>
+
+        <div class="input-group">
+            <label for="confirm_password">
+                Confirm Password
+            </label>
+
+            <input
+                type="password"
+                id="confirm_password"
+                name="confirm_password"
+                placeholder="Confirm Password"
+                required>
+        </div>
+
+        <div class="input-group">
+            <label for="role">User Role</label>
+
+            <select
+                id="role"
+                name="role"
+                required>
+
+                <option value="">
+                    Select Role
+                </option>
+
+                <option value="Admin">
+                    👨‍💼 Admin
+                </option>
+
+                <option value="Officer">
+                    🛡 Officer
+                </option>
+
+                <option value="Security Staff">
+                    👮 Security Staff
+                </option>
+
+            </select>
+        </div>
+
+        <button type="submit">
+            Create Account
+        </button>
+
+    </form>
+
+    <div class="security-note">
+        🔒 Authorized Personnel Only
+    </div>
+
+    <div class="footer-links">
+
+        <p>
+            Already have an account?
+            <a href="/">Login</a>
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+</html>

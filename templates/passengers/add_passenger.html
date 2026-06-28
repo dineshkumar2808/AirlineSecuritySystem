@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Passenger</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/passengers.css') }}">
+</head>
+
+<body>
+
+<div class="form-container">
+
+    <a href="/passengers" class="back-btn">
+        ← Back to Passengers
+    </a>
+
+    <h2>👤 Add Passenger</h2>
+
+    <p class="subtitle">
+        Register a new passenger into the airline security system
+    </p>
+
+    <form action="/save-passenger" method="POST">
+
+        <div class="form-group">
+            <label for="name">Passenger Name</label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter passenger name"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="passport_no">Passport Number</label>
+            <input
+                type="text"
+                id="passport_no"
+                name="passport_no"
+                placeholder="Enter passport number"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="nationality">Nationality</label>
+            <input
+                type="text"
+                id="nationality"
+                name="nationality"
+                placeholder="Enter nationality">
+        </div>
+
+        <div class="form-group">
+            <label for="gender">Gender</label>
+
+            <select id="gender" name="gender">
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input
+                type="text"
+                id="phone"
+                name="phone"
+                placeholder="Enter phone number">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter email address">
+        </div>
+
+        <button type="submit" class="submit-btn">
+            Save Passenger
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

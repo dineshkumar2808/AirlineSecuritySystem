@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AirSecure Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/dashboard.css') }}">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+        ✈ AirSecure
+    </div>
+
+    <ul>
+        <li><a href="/dashboard">🏠 Dashboard</a></li>
+        <li><a href="/passengers">👤 Passengers</a></li>
+        <li><a href="/flights">🛫 Flights</a></li>
+        <li><a href="/security">🛡 Security</a></li>
+        <li><a href="/logout">🚪 Logout</a></li>
+    </ul>
+
+</div>
+
+<div class="main-content">
+
+    <div class="top-header">
+
+        <div>
+            <h1>Airline Security Dashboard</h1>
+            <p>Welcome, {{ session['user'] }}</p>
+        </div>
+
+        <div class="date-box">
+            Airport Operations Center
+        </div>
+
+    </div>
+
+    <div class="hero-banner">
+
+        <h2>🛡 Airport Security Command Center</h2>
+
+        <p>
+            Monitor passengers, flights,
+            security screenings and alerts in real time.
+        </p>
+
+    </div>
+
+    <div class="cards">
+
+        <div class="card passengers">
+            <h3>Total Passengers</h3>
+            <h1>{{ passenger_count }}</h1>
+        </div>
+
+        <div class="card flights">
+            <h3>Total Flights</h3>
+            <h1>{{ flight_count }}</h1>
+        </div>
+
+        <div class="card security">
+            <h3>Security Checks</h3>
+            <h1>{{ security_count }}</h1>
+        </div>
+
+        <div class="card alerts">
+            <h3>Threat Alerts</h3>
+            <h1>0</h1>
+        </div>
+
+    </div>
+
+    <div class="quick-actions">
+
+        <a href="/add-passenger">+ Passenger</a>
+
+        <a href="/add-flight">+ Flight</a>
+
+        <a href="/add-security">+ Security Check</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

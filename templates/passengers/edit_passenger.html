@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Passenger</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/passengers.css') }}">
+</head>
+
+<body>
+
+<div class="form-container">
+
+    <a href="/passengers" class="back-btn">
+        ← Back to Passengers
+    </a>
+
+    <h2>👤 Edit Passenger</h2>
+
+    <p class="subtitle">
+        Update passenger information
+    </p>
+
+    <form action="/update-passenger/{{ passenger['id'] }}"
+          method="POST">
+
+        <div class="form-group">
+            <label for="name">Passenger Name</label>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                value="{{ passenger['name'] }}"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="passport_no">Passport Number</label>
+
+            <input
+                type="text"
+                id="passport_no"
+                name="passport_no"
+                value="{{ passenger['passport_no'] }}"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="nationality">Nationality</label>
+
+            <input
+                type="text"
+                id="nationality"
+                name="nationality"
+                value="{{ passenger['nationality'] }}">
+        </div>
+
+        <div class="form-group">
+            <label for="gender">Gender</label>
+
+            <select id="gender" name="gender">
+
+                <option value="Male"
+                {% if passenger['gender']=='Male' %}selected{% endif %}>
+                    Male
+                </option>
+
+                <option value="Female"
+                {% if passenger['gender']=='Female' %}selected{% endif %}>
+                    Female
+                </option>
+
+                <option value="Other"
+                {% if passenger['gender']=='Other' %}selected{% endif %}>
+                    Other
+                </option>
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone</label>
+
+            <input
+                type="text"
+                id="phone"
+                name="phone"
+                value="{{ passenger['phone'] }}">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+
+            <input
+                type="email"
+                id="email"
+                name="email"
+                value="{{ passenger['email'] }}">
+        </div>
+
+        <button type="submit" class="submit-btn">
+            Update Passenger
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

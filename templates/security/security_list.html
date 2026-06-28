@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Screening Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/security.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="hero-section">
+
+        <div class="nav-buttons">
+
+            <a href="/dashboard" class="dashboard-btn">
+                🏠 Dashboard
+            </a>
+
+            <a href="javascript:history.back()" class="back-btn">
+                ← Back
+            </a>
+
+        </div>
+
+        <div class="hero-content">
+            <h1>🛡 Security Screening Dashboard</h1>
+            <p>
+                Monitor passenger security checks, risk assessments,
+                and boarding clearance.
+            </p>
+        </div>
+
+        <a href="/add-security" class="new-btn">
+            + New Screening
+        </a>
+
+    </div>
+
+    <div class="stats-row">
+
+        <div class="stat-card">
+            <h3>{{ checks|length }}</h3>
+            <span>Total Checks</span>
+        </div>
+
+        <div class="stat-card approved">
+            <h3>✓</h3>
+            <span>Approved</span>
+        </div>
+
+        <div class="stat-card pending">
+            <h3>⏳</h3>
+            <span>Pending</span>
+        </div>
+
+        <div class="stat-card rejected">
+            <h3>✖</h3>
+            <span>Rejected</span>
+        </div>
+
+    </div>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Passenger</th>
+                    <th>Flight</th>
+                    <th>Risk Level</th>
+                    <th>Status</th>
+                    <th>Officer</th>
+                    <th>Actions</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for check in checks %}
+
+                <tr>
+
+                    <td>#{{ check['id'] }}</td>
+
+                    <td>{{ check['name'] }}</td>
+
+                    <td>{{ check['flight_no'] }}</td>
+
+                    <td>
+
+                        <span class="risk-badge risk-{{ check['risk_level']|lower }}">
+                            {{ check['risk_level'] }}
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <span class="status-badge status-{{ check['security_status']|lower }}">
+                            {{ check['security_status'] }}
+                        </span>
+
+                    </td>
+
+                    <td>{{ check['officer_name'] }}</td>
+
+                    <td>
+
+                        <a href="/edit-security/{{ check['id'] }}"
+                           class="action-btn edit-btn">
+                            Edit
+                        </a>
+
+                        <a href="/delete-security/{{ check['id'] }}"
+                           class="action-btn delete-btn"
+                           onclick="return confirm('Delete this screening?')">
+                            Delete
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

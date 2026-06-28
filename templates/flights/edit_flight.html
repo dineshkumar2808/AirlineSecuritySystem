@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Flight</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/flights.css') }}">
+</head>
+
+<body>
+
+<div class="form-container">
+
+    <a href="/flights" class="back-btn">
+        ← Back to Flights
+    </a>
+
+    <h2>🛫 Edit Flight</h2>
+
+    <p class="subtitle">
+        Update flight information and schedule
+    </p>
+
+    <form action="/update-flight/{{ flight['id'] }}" method="POST">
+
+        <div class="form-group">
+            <label for="flight_no">Flight Number</label>
+            <input
+                type="text"
+                id="flight_no"
+                name="flight_no"
+                value="{{ flight['flight_no'] }}"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="airline_name">Airline Name</label>
+            <input
+                type="text"
+                id="airline_name"
+                name="airline_name"
+                value="{{ flight['airline_name'] }}"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="source">Source</label>
+            <input
+                type="text"
+                id="source"
+                name="source"
+                value="{{ flight['source'] }}"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="destination">Destination</label>
+            <input
+                type="text"
+                id="destination"
+                name="destination"
+                value="{{ flight['destination'] }}"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="departure_time">Departure Time</label>
+            <input
+                type="datetime-local"
+                id="departure_time"
+                name="departure_time"
+                value="{{ flight['departure_time'] }}"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="arrival_time">Arrival Time</label>
+            <input
+                type="datetime-local"
+                id="arrival_time"
+                name="arrival_time"
+                value="{{ flight['arrival_time'] }}"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="status">Flight Status</label>
+
+            <select id="status" name="status">
+
+                <option value="Scheduled"
+                {% if flight['status']=='Scheduled' %}selected{% endif %}>
+                    Scheduled
+                </option>
+
+                <option value="Boarding"
+                {% if flight['status']=='Boarding' %}selected{% endif %}>
+                    Boarding
+                </option>
+
+                <option value="Delayed"
+                {% if flight['status']=='Delayed' %}selected{% endif %}>
+                    Delayed
+                </option>
+
+                <option value="Cancelled"
+                {% if flight['status']=='Cancelled' %}selected{% endif %}>
+                    Cancelled
+                </option>
+
+            </select>
+        </div>
+
+        <button type="submit" class="submit-btn">
+            Update Flight
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

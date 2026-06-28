@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Security Screening</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/security.css') }}">
+</head>
+
+<body>
+
+<div class="form-container">
+
+    <a href="/security" class="back-btn">
+        ← Back to Security Checks
+    </a>
+
+    <h2>🛡 Security Screening</h2>
+
+    <p class="subtitle">
+        Passenger Security Verification
+    </p>
+
+    <form action="/save-security" method="POST">
+
+        <div class="form-group">
+
+            <label for="passenger_id">
+                Passenger
+            </label>
+
+            <select id="passenger_id"
+                    name="passenger_id"
+                    required>
+
+                {% for passenger in passengers %}
+
+                <option value="{{ passenger['id'] }}">
+                    {{ passenger['name'] }}
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="flight_id">
+                Flight
+            </label>
+
+            <select id="flight_id"
+                    name="flight_id"
+                    required>
+
+                {% for flight in flights %}
+
+                <option value="{{ flight['id'] }}">
+                    {{ flight['flight_no'] }}
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="baggage_scan">
+                Baggage Scan
+            </label>
+
+            <select id="baggage_scan"
+                    name="baggage_scan">
+
+                <option value="Passed">
+                    Passed
+                </option>
+
+                <option value="Failed">
+                    Failed
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="metal_detector">
+                Metal Detector
+            </label>
+
+            <select id="metal_detector"
+                    name="metal_detector">
+
+                <option value="Passed">
+                    Passed
+                </option>
+
+                <option value="Failed">
+                    Failed
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="risk_level">
+                Risk Level
+            </label>
+
+            <select id="risk_level"
+                    name="risk_level">
+
+                <option value="Low">
+                    Low
+                </option>
+
+                <option value="Medium">
+                    Medium
+                </option>
+
+                <option value="High">
+                    High
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="security_status">
+                Security Status
+            </label>
+
+            <select id="security_status"
+                    name="security_status">
+
+                <option value="Approved">
+                    Approved
+                </option>
+
+                <option value="Pending">
+                    Pending
+                </option>
+
+                <option value="Rejected">
+                    Rejected
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="officer_name">
+                Officer Name
+            </label>
+
+            <input
+                type="text"
+                id="officer_name"
+                name="officer_name"
+                placeholder="Enter officer name">
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="remarks">
+                Remarks
+            </label>
+
+            <textarea
+                id="remarks"
+                name="remarks"
+                rows="4"
+                placeholder="Security observations"></textarea>
+
+        </div>
+
+        <button type="submit"
+                class="submit-btn">
+
+            Save Screening
+
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
